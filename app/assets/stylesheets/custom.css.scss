@@ -61,6 +61,19 @@ p {
 }
 
 /* header */
+.navbar-inverse .navbar-inner {
+  background-color: #006ccc;
+  background-image: none;
+}
+
+.navbar-inverse .brand, .navbar-inverse .nav > li > a {
+  color: $white;
+  &:hover {
+    background-color: $white;
+    color: $black;
+    text-decoration: none;
+  }
+}
 
 #logo {
   float: left;
