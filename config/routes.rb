@@ -1,5 +1,7 @@
 Shortly::Application.routes.draw do
-  get "links/new"
+  get 'l/:short_url', to: 'links#redirect'
+  get 's/:short_url', to: 'links#show'
+  resources :links
   root  'static_pages#home'
   #match '/help',    to: 'static_pages#help',    via: 'get'
 

@@ -1,0 +1,9 @@
+<div class="center hero-unit">
+  <h2>Your URL:</h2>
+  <h3><%= link_to @link.long_url, @link.long_url %></h3>
+  <h2>was shortened to:</h2>
+  <h3><%= link_to root_url+"l/"+@link.short_url, root_url+"l/"+@link.short_url %></h3>
+  <br/>
+  <h4>Do you want a custom alias for your link? Statistics?</h4>
+  <%= link_to "Register!", '#', class: "btn btn-large btn-primary" %>
+</div>
