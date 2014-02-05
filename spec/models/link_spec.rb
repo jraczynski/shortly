@@ -22,9 +22,19 @@ describe Link do
     it { should_not be_valid }
   end
 
-  describe "when short_url is already taken" do
+  describe "when short_url is already taken" do #it should generate new?
     before do
       link_with_same_short_url = @link.dup
+      link_with_same_short_url.save
+    end
+
+    it { should_not be_valid }
+    
+  end
+
+  describe "when long_url is already in the database" do
+    before do
+      same_long_url = @link.long_url
       link_with_same_short_url.save
     end
 

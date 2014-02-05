@@ -17,13 +17,26 @@ class LinksController < ApplicationController
   def create
     @link = Link.new(link_params)
     #TODO: make an outer method
-    if !@link.short_url
-      @link.short_url = SecureRandom.urlsafe_base64(6)
-    end
-    if @link.save
-      redirect_to root_url+"s/"+@link.short_url
+
+    link2 = Link.find_by long_url: @link.long_url
+
+    if link2
+      #TODO: remove link from memory?
+      redirect_to showlink_path(link2.short_url)
     else
-      render 'static_pages/home'
+      if !@link.short_url
+        @link.short_url = SecureRandom.urlsafe_base64(6)
+        #if Link.find_by short_url: @link.short_url do
+        #  @link.short_url = SecureRandom.urlsafe_base64(6)
+        #end
+      end
+
+      if @link.save
+        redirect_to showlink_path(@link.short_url)
+      else
+        #TODO: if error short_url not unique then generate new
+        render 'static_pages/home' # or links/new if user logged in
+      end
     end
   end
 
