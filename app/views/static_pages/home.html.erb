@@ -1,10 +1,13 @@
 <div class="center hero-unit">
   <h2>short.ly - Shorten that long URLs!</h2>
 
-  <form name="input_url" action="#" method="post">
-    <input type="text" name="longurl">
-    <input type="submit" class="btn btn-large btn-primary" value="Shorten!">
-  </form>
+  <div class="row">
+    <%= form_for(@link) do |f| %>
+    
+      <%= f.text_field :long_url %>
 
-  <!--<#%= link_to "Shorten!", '#', class: "btn btn-large btn-primary" %> -->
+      <%= f.submit "Shorten!", class: "btn btn-large btn-primary" %>
+    <% end %>
+  </div>
+
 </div>
