@@ -5,6 +5,8 @@
   <h2>was shortened to:</h2>
   <h3><%= link_to redirlink_url(@link.short_url), redirlink_path(@link.short_url) %></h3>
   <br/>
-  <h4>Do you want a custom alias for your link? Statistics?</h4>
-  <%= link_to "Register!", signup_path , class: "btn btn-large btn-primary" %>
+  <% if not signed_in? %>
+    <h4>Do you want a custom alias for your link? Statistics?</h4>
+    <%= link_to "Register!", signup_path , class: "btn btn-large btn-primary" %>
+  <% end %>
 </div>
