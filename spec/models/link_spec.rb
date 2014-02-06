@@ -32,12 +32,4 @@ describe Link do
     
   end
 
-  describe "when long_url is already in the database" do
-    before do
-      same_long_url = @link.long_url
-      link_with_same_short_url.save
-    end
-
-    it { should_not be_valid }
-  end
 end
