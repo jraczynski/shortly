@@ -1,0 +1,9 @@
+<li>
+  <span class="content">
+    <%= link_to link.long_url, link.long_url %> <br/>
+    <%= link_to redirlink_url(link.short_url), redirlink_url(link.short_url) %> <br/>
+  </span>
+  <span class="timestamp">
+    Created <%= time_ago_in_words(link.created_at) %> ago.
+  </span>
+</li>

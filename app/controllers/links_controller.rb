@@ -31,6 +31,10 @@ class LinksController < ApplicationController
         #end
       end
 
+      if current_user
+        @link.user_id = current_user.id
+      end
+
       if @link.save
         redirect_to showlink_path(@link.short_url)
       else

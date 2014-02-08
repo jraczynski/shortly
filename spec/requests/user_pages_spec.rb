@@ -54,10 +54,21 @@ describe "User pages" do
 
   describe "profile page" do
     let(:user) { FactoryGirl.create(:user) }
+    let!(:l1) { FactoryGirl.create(:link_with_user, user: user) }
+    let!(:l2) { FactoryGirl.create(:link_with_user, user: user) }
+
     before { visit user_path(user) }
 
     it { should have_content(user.name) }
     it { should have_title(user.name) }
+
+    describe "links" do
+      it { should have_content(l1.long_url) }
+      it { should have_content(l1.short_url) }
+      it { should have_content(l2.long_url) }
+      it { should have_content(l2.short_url) }
+      it { should have_content(user.links.count) }
+    end
   end
 
   describe "signup page" do
