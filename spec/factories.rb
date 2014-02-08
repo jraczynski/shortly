@@ -3,8 +3,12 @@ require 'securerandom'
 FactoryGirl.define do
   
   factory :link do
-    short_url   SecureRandom.urlsafe_base64(6)
+    sequence(:short_url) { SecureRandom.urlsafe_base64(6) }
     sequence(:long_url) { |i| "https://github.com/jraczynski/shortly#{i}" }
+
+    factory :link_with_user do
+      user
+    end
   end
 
   factory :user do

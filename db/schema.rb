@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140207172213) do
+ActiveRecord::Schema.define(version: 20140208144444) do
 
   create_table "links", force: true do |t|
     t.string   "short_url"
@@ -23,6 +23,7 @@ ActiveRecord::Schema.define(version: 20140207172213) do
 
   add_index "links", ["long_url"], name: "index_links_on_long_url"
   add_index "links", ["short_url"], name: "index_links_on_short_url", unique: true
+  add_index "links", ["user_id", "created_at"], name: "index_links_on_user_id_and_created_at"
 
   create_table "users", force: true do |t|
     t.string   "name"

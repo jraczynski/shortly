@@ -8,6 +8,7 @@ describe Link do
   it { should respond_to(:short_url) }
   it { should respond_to(:long_url) }
   it { should respond_to(:user_id) }
+  it { should respond_to(:user) }
 
   it { should be_valid }
 

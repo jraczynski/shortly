@@ -19,6 +19,7 @@ describe User do
   it { should respond_to(:remember_token) }
   it { should respond_to(:authenticate) }
   it { should respond_to(:admin) }
+  it { should respond_to(:links) }
 
   it { should be_valid }
   it { should_not be_admin }
@@ -117,5 +118,29 @@ describe User do
   describe "remember token" do
     before { @user.save }
     its(:remember_token) { should_not be_blank }
+  end
+
+  describe "link associations" do
+
+    before { @user.save }
+    let!(:older_link) do
+      FactoryGirl.create(:link_with_user, user: @user, created_at: 1.day.ago)
+    end
+    let!(:newer_link) do
+      FactoryGirl.create(:link_with_user, user: @user, created_at: 1.hour.ago)
+    end
+
+    it "should have the right links in the right order" do
+      expect(@user.links.to_a).to eq [newer_link, older_link]
+    end
+
+    it "should destroy associated links" do
+      links = @user.links.to_a
+      @user.destroy
+      expect(links).not_to be_empty
+      links.each do |link|
+        expect(Link.where(id: link.id)).to be_empty
+      end
+    end
   end
 end
