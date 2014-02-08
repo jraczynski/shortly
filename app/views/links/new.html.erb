@@ -4,7 +4,8 @@
   <div class="row">
     <%= form_for(@link) do |f| %>
     
-      <%= f.text_field :long_url, placeholder: "Paste your long URL here" %>
+      <%= f.text_field :long_url, placeholder: "Paste your long URL here", class: "urlinput" %>
+      <%= f.text_field :short_url, placeholder: "Custom alias", class: "urlinput" if signed_in? %>
 
       <%= f.submit "Shorten!", class: "btn btn-large btn-primary" %>
     <% end %>

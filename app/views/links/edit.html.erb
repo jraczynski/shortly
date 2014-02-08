@@ -1,0 +1,15 @@
+<% provide(:title, "Edit link") %>
+<div class="center hero-unit">
+  <h2>Edit your link</h2>
+
+  <div class="row">
+    <%= form_for(@link) do |f| %>
+    
+      <%= f.text_field :long_url, placeholder: "Paste your long URL here", class: "urlinput", value: @link.long_url %>
+      <%= f.text_field :short_url, placeholder: "Custom alias", class: "urlinput", value: @link.short_url%>
+
+      <%= f.submit "Save changes", class: "btn btn-large btn-primary" %>
+    <% end %>
+  </div>
+
+</div>
