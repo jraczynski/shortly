@@ -9,3 +9,5 @@ Short.ly - Simple URL Shortener
 
 ### About:
 Short.ly was created while learning Rails with [*Ruby on Rails Tutorial*](http://railstutorial.org/). Most of the User code and styling comes from there.
+
+[*Working demo on Heroku*](https://shortly-jr.herokuapp.com/)
