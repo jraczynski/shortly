@@ -1,0 +1,10 @@
+- provide(:title, "Your URL")
+%div{ class: ['center', 'hero-unit'] }
+  %h2 Your URL:
+  %h3= link_to @link.long_url, @link.long_url
+  %h2 was shortened to:
+  %h3= link_to redirlink_url(@link.short_url), redirlink_path(@link.short_url)
+  %br/
+  - if not signed_in?
+    %h4 Do you want a custom alias for your link? Statistics?
+    = link_to "Register!", signup_path , class: "btn btn-large btn-primary"

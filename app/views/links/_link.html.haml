@@ -1,0 +1,15 @@
+%li
+  %span.content
+    = link_to link.long_url, link.long_url
+    %br/
+    = link_to redirlink_url(link.short_url), redirlink_url(link.short_url)
+    %br/
+    - if current_user?(link.user)
+      = link_to "Edit", edit_link_path(link) | 
+      = link_to "Delete", link, method: :delete, data: { confirm: "You sure?" }
+      %br/
+  %span.timestamp
+    = link.visits 
+    visits. Created
+    = time_ago_in_words(link.created_at)
+    ago.

@@ -1,0 +1,13 @@
+- provide(:title, @user.name)
+.row
+  %aside.span4
+    %section
+      %h1
+        = gravatar_for @user
+        = @user.name
+  .span8
+    - if @user.links.any?
+      %h3 My Links (#{@user.links.count})
+      %ol.links
+        = render @links
+      = will_paginate @links
