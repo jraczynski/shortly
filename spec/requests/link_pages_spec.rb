@@ -40,8 +40,6 @@ describe "Link pages" do
 
   end  
 
-
-
   describe "show link page" do
     let(:link) { FactoryGirl.create(:link) }
     before { visit showlink_path(link.short_url) }

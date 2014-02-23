@@ -12,7 +12,6 @@ describe Link do
 
   it { should be_valid }
 
-  #TODO: DRY this code
   describe "when short_url is not present" do
     before { @link.short_url = " " }
     it { should_not be_valid }
@@ -23,7 +22,7 @@ describe Link do
     it { should_not be_valid }
   end
 
-  describe "when short_url is already taken" do #it should generate new?
+  describe "when short_url is already taken" do
     before do
       link_with_same_short_url = @link.dup
       link_with_same_short_url.save
